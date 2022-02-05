@@ -29,7 +29,6 @@ int sumRootToLeaf(TreeNode *root){
     for(auto itr:vect){
         int curr_sum = 0;
         for (int i = 0; i < itr.size();i++){
-            int num = 
             curr_sum += (itr[i]-'0') * pow(2, itr.size() - i - 1);
         }
         sum += curr_sum;
