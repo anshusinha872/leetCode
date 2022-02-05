@@ -17,20 +17,18 @@ vector<double> averageOfLevels(TreeNode *root){
         return vect;
     deque<TreeNode *> dq;
     dq.push_back(root);
-    double sum = 0.0;
     dq.push_back(NULL);
-    vect.push_back(root->val);
-    while(dq.empty()==false){
-        // int size = dq.size();
+    vect.push_back(double(root->val));
+    while(dq.size()>1){
         TreeNode *curr = dq.front();
         dq.pop_front();
-        sum = 0.0;
         if(curr==NULL){
-            
-            for (auto itr = ++dq.begin(); itr != dq.end();itr++){
+            int size = dq.size();
+            double sum = 0.0;
+            for (auto itr = dq.begin(); itr != dq.end();itr++){
                 sum += (*itr)->val;
             }
-            vect.push_back(sum / double(dq.size() - 1));
+            vect.push_back(sum / size);
             dq.push_back(NULL);
             continue;
         }
