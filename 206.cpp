@@ -19,9 +19,9 @@ struct ListNode{
         next = NULL;
     }
 };
-ListNode* addNode(ListNode** root,int val){
+ListNode* addNode(ListNode* root,int val){
     ListNode *temp = new ListNode(val);
-    ListNode *ptr = *root;
+    ListNode *ptr = root;
     if(ptr==NULL)
         return ptr;
     ListNode *curr = ptr;
@@ -55,10 +55,10 @@ ListNode *reverseList(ListNode *head){
 }
 int main(){
     ListNode *root = new ListNode(1);
-    addNode(&root, 2);
-    addNode(&root, 3);
-    addNode(&root, 4);
-    addNode(&root, 5);
+    addNode(root, 2);
+    addNode(root, 3);
+    addNode(root, 4);
+    addNode(root, 5);
     printNode(root);
     root = reverseList(root);
     cout << "\nReversed Node : ";
