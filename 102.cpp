@@ -51,6 +51,8 @@ public:
                 q.pop();
                 if (curr == NULL)
                 {
+                    
+                    //
                     q.push(NULL);
                     i++;
                     continue;
