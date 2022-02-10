@@ -42,6 +42,8 @@ bool hasPathSum(TreeNode *root,int targetSum){
         if(root->left!=NULL)
             if(hasPathSum(root->left, (targetSum - root->val)))
                 return true;
+
+                
         if(root->right!=NULL)
             if(hasPathSum(root->right, (targetSum - root->val)))
                 return true;
