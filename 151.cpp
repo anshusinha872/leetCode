@@ -55,7 +55,6 @@ int main(){
     // cout << str[j] << endl;
     int count = 0;
     bool flag = false;
-    cout << "start";
     for (int start = i; start <= j;start++){
         if(str[start]==' '){
             while(str[start]==' '){
@@ -68,7 +67,6 @@ int main(){
             s.push_back(str[start]);
         }
     }
-    cout << "end";
     reverseWords(s);
     cout << s << endl;
     return 0;
