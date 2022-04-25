@@ -31,23 +31,57 @@
 #include<bits/stdc++.h>
 using namespace std;
 int maxProfit(vector<int> &prices, int fee){
+    /* time complexity == O(n) && space complexity == O(n)*/
+
+
+
+
+    // int n = prices.size();
+    // vector<int> buy(n, 0);
+    // buy[0] = -prices[0];
+    // vector<int> sell(n, 0);
+    // for (int i = 1; i < n;i++){
+    //     buy[i] = max(buy[i - 1], sell[i - 1] - prices[i]);
+    //     sell[i] = max(sell[i - 1], prices[i] + buy[i - 1] - fee);
+    // }
+    // return sell[n - 1];
+
+
+
+    /*Time complexity == O(n ) && space complexity == O(1)*/
+
+    // profit when intially we buy a stock == - price of first stock as we have zero rupees
+    int obsp = -prices[0];
+    // profit when we sell a stock == 0 as we have zero stock intially in our hand
+
+    int ossp = 0;
     int n = prices.size();
-    vector<int> buy(n, 0);
-    buy[0] = -prices[0];
-    vector<int> sell(n, 0);
     for (int i = 1; i < n;i++){
-        buy[i] = max(buy[i - 1], sell[i - 1] - prices[i]);
-        sell[i] = max(sell[i - 1], prices[i] + buy[i - 1] - fee);
+        // new buy state profit means profit if we buy stock at this point of time
+        int nbsp;
+        // new sell state profit  means profit if we sell stock at this point of time
+        int nssp;
+        // we are checking if we could get more profit if we but stock at current time
+        // current buy profit == old sell profit or money left with us - current price of stock as compared to previous buy profit
+        if(ossp-prices[i]>obsp){
+            nbsp = ossp - prices[i];
+        }
+        // if current buy profit is less than previous buy profit then we are not buying stock we are proceding with previous stock which we have
+        else{
+            nbsp = obsp;
+        }
+        // current sell profit == old buy profit + profit that we get from selling stock - transaction fee 
+        if(obsp+prices[i]-fee>ossp){
+            // if current sell profit is greater than previous sell profit then we sell stock at this time otherwise we ignore selling right now
+            nssp = obsp + prices[i] - fee;
+        }
+        else{
+            nssp = ossp;
+        }
+        ossp = nssp;
+        obsp = nbsp;
     }
-    // cout << "Bought" << endl;
-    // for(int x:buy){
-    //     cout << x << " ";
-    // }
-    // cout << "\nSell" << endl;
-    // for(int x:sell){
-    //     cout << x << " ";
-    // }
-    return sell[n - 1];
+    return ossp;
 }
 int main(){
     int n,fee;
