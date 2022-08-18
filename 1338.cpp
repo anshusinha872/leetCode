@@ -13,33 +13,39 @@
 //                                                                 Constraints :
 
 //                                                                 2 <= arr.length <= 105 arr.length is even.1 <= arr[i] <= 105
-#include<bits/stdc++.h>
-                    using namespace std;
-int minSetSize(vector<int> &arr){
+#include <bits/stdc++.h>
+using namespace std;
+int minSetSize(vector<int> &arr)
+{
     map<int, int> mp;
-    for(int x:arr){
+    for (int x : arr)
+    {
         mp[x]++;
     }
     int size = arr.size();
     int count = 0;
     vector<int> freq;
-    for(auto itr:mp){
+    for (auto itr : mp)
+    {
         freq.push_back(itr.second);
     }
-    sort(freq.begin(), freq.end(),greater<int>());
+    sort(freq.begin(), freq.end(), greater<int>());
     int res = 0;
     int i = 0;
-    while(res<size/2 && i<size){
+    while (res < size / 2 && i < size)
+    {
         count++;
         res += freq[i++];
     }
     return count;
 }
-int main(){
+int main()
+{
     int n;
     cin >> n;
     vector<int> arr(n);
-    for (int i = 0; i < n;i++){
+    for (int i = 0; i < n; i++)
+    {
         cin >> arr[i];
     }
     cout << minSetSize(arr) << endl;
