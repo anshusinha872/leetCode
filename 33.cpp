@@ -22,7 +22,7 @@
 //     Input : nums = [1],
 //             target = 0 Output : -1
 #include "bits/stdc++.h"
-                                using namespace std;
+using namespace std;
 #define max(a, b) (a < b ? b : a)
 #define min(a, b) ((a > b) ? b : a)
 #define mod 1e9 + 7
